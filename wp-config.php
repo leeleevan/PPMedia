@@ -1,4 +1,5 @@
 <?php
+define( 'WP_CACHE', true ); 
 /**
  * The base configuration for WordPress
  *
@@ -17,26 +18,19 @@
  *
  * @package WordPress
  */
-
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'PPMedia' );
-
 /** MySQL database username */
 define( 'DB_USER', 'root' );
-
 /** MySQL database password */
 define( 'DB_PASSWORD', 'root' );
-
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
-
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
-
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -54,9 +48,7 @@ define( 'AUTH_SALT',        '44$!<l2Lq) >q>lSy[TtCB ^?ZY4=h&&k09T0:Egz}JNmD?N6Ii
 define( 'SECURE_AUTH_SALT', 'erI8|lJm&RY029UG,#2D2,,a4n+EY/aY=8yK<5zOD,Go$6(jR[e^AU5^OiYnb;2|' );
 define( 'LOGGED_IN_SALT',   '}PY[mx4rg!Dr#h]P]]QO{/ -z:v]7NXG~6b0ny5FY[&fU>#NJZD=YBs7z[GIC^6J' );
 define( 'NONCE_SALT',       'cy8~N#m0JGiD2CpbO=b[ tf@1x:);N+o(p$CbT:R.,i%L93HJ)(PSD/Y@e{`V5sG' );
-
 /**#@-*/
-
 /**
  * WordPress Database Table prefix.
  *
@@ -64,7 +56,6 @@ define( 'NONCE_SALT',       'cy8~N#m0JGiD2CpbO=b[ tf@1x:);N+o(p$CbT:R.,i%L93HJ)(
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix = 'wp_';
-
 /**
  * For developers: WordPress debugging mode.
  *
@@ -78,13 +69,10 @@ $table_prefix = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define( 'WP_DEBUG', false );
-
 /* That's all, stop editing! Happy publishing. */
-
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
-
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );
