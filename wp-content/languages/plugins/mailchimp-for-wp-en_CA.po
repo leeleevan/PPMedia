@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Mailchimp for WordPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-03-07 05:22:52+0000\n"
+"PO-Revision-Date: 2019-04-17 18:09:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,7 +11,27 @@ msgstr ""
 "Language: en_CA\n"
 "Project-Id-Version: Plugins - Mailchimp for WordPress - Stable (latest release)\n"
 
-#: assets/js/forms-block.js:33 assets/js/forms-block.min.js:33
+#: includes/forms/class-google-recaptcha.php:176
+msgid "Google reCAPTCHA Secret Key"
+msgstr "Google reCAPTCHA Secret Key"
+
+#: includes/forms/class-google-recaptcha.php:170
+msgid "Enter your Google reCAPTCHA keys here. You can <a href=\"%s\">retrieve your keys in the Google reCAPTCHA admin console</a> or read our help article on <a href=\"%s\">how to configure Google reCAPTCHA</a>."
+msgstr "Enter your Google reCAPTCHA keys here. You can <a href=\"%s\">retrieve your keys in the Google reCAPTCHA admin console</a> or read our help article on <a href=\"%s\">how to configure Google reCAPTCHA</a>."
+
+#: includes/forms/class-google-recaptcha.php:166
+msgid "Google reCAPTCHA Site Key"
+msgstr "Google reCAPTCHA Site Key"
+
+#: includes/forms/class-google-recaptcha.php:160
+msgid "Select \"yes\" to enable Google reCAPTCHA spam protection for this form."
+msgstr "Select \"yes\" to enable Google reCAPTCHA spam protection for this form."
+
+#: includes/forms/class-google-recaptcha.php:154
+msgid "Enable Google reCaptcha"
+msgstr "Enable Google reCaptcha"
+
+#: assets/js/forms-block.js:40 assets/js/forms-block.min.js:40
 msgid "Mailchimp for WordPress Sign-up Form"
 msgstr "Mailchimp for WordPress Sign up Form"
 
@@ -158,8 +178,8 @@ msgstr "Showing the first 20 choices.<br> All %d choices will be displayed when 
 msgid "(empty)"
 msgstr "(empty)"
 
-#: integrations/wpforms/class-field.php:98
 #: integrations/gravity-forms/class-gravity-forms.php:99
+#: integrations/wpforms/class-field.php:98
 msgid "Mailchimp list"
 msgstr "Mailchimp list"
 
@@ -389,7 +409,7 @@ msgstr "Property of the current page or post."
 msgid "After customer details"
 msgstr "After customer details"
 
-#: includes/forms/class-admin.php:469
+#: includes/forms/class-admin.php:477
 msgid "Select the form to show"
 msgstr "Select the form to show"
 
@@ -654,25 +674,25 @@ msgstr "Name"
 
 #: includes/integrations/class-admin.php:85
 #: includes/integrations/class-admin.php:86
+#: includes/integrations/views/integration-settings.php:10
 #: includes/integrations/views/integrations.php:95
 #: includes/integrations/views/integrations.php:103
 #: includes/integrations/views/integrations.php:117
-#: includes/integrations/views/integration-settings.php:10
 msgid "Integrations"
 msgstr "Integrations"
 
-#: integrations/ninja-forms/class-action.php:30
 #: includes/forms/views/tabs/form-settings.php:41
+#: integrations/ninja-forms/class-action.php:30
 msgid "Use double opt-in?"
 msgstr "Use double opt-in?"
 
-#: includes/integrations/views/integration-settings.php:199
 #: includes/forms/views/tabs/form-settings.php:66
+#: includes/integrations/views/integration-settings.php:199
 msgid "Select \"yes\" if you want to update existing subscribers with the data that is sent."
 msgstr "Select \"yes\" if you want to update existing subscribers with the data that is sent."
 
-#: includes/integrations/views/integration-settings.php:220
 #: includes/forms/views/tabs/form-settings.php:84
+#: includes/integrations/views/integration-settings.php:220
 msgid "What does this do?"
 msgstr "What does this do?"
 
@@ -696,8 +716,8 @@ msgstr "Implicit?"
 msgid "Select \"yes\" if the checkbox should be pre-checked."
 msgstr "Select \"yes\" if the checkbox should be pre-checked."
 
-#: includes/integrations/views/integration-settings.php:219
 #: includes/forms/views/tabs/form-settings.php:83
+#: includes/integrations/views/integration-settings.php:219
 msgid "Select \"no\" if you want to add the selected interests to any previously selected interests when updating a subscriber."
 msgstr "Select \"no\" if you want to add the selected interests to any previously selected interests when updating a subscriber."
 
@@ -717,10 +737,10 @@ msgstr "Please ensure you <a href=\"%s\">configure the plugin to send all requir
 msgid "Enable the %s integration? This will add a sign-up checkbox to the form."
 msgstr "Enable the %s integration? This will add a sign up checkbox to the form."
 
-#: includes/integrations/views/integrations.php:93
+#: includes/forms/views/edit-form.php:22
 #: includes/integrations/views/integration-settings.php:8
-#: includes/forms/views/edit-form.php:22 includes/views/other-settings.php:59
-#: includes/views/general-settings.php:7
+#: includes/integrations/views/integrations.php:93
+#: includes/views/other-settings.php:59 includes/views/general-settings.php:7
 msgid "You are here: "
 msgstr "You are here: "
 
@@ -885,11 +905,11 @@ msgstr "To which Mailchimp lists should this form subscribe?"
 msgid "No lists found. Did you <a href=\"%s\">connect with Mailchimp</a>?"
 msgstr "No lists found. Did you <a href=\"%s\">connect with Mailchimp</a>?"
 
-#: includes/forms/class-admin.php:400
+#: includes/forms/class-admin.php:408
 msgid "Form not found."
 msgstr "Form not found."
 
-#: includes/forms/class-admin.php:402
+#: includes/forms/class-admin.php:410
 msgid "Go back"
 msgstr "Go back"
 
@@ -897,7 +917,7 @@ msgstr "Go back"
 msgid "Once a month"
 msgstr "Once a month"
 
-#: includes/forms/class-admin.php:168 includes/forms/class-admin.php:293
+#: includes/forms/class-admin.php:168 includes/forms/class-admin.php:301
 msgid "<strong>Success!</strong> Form successfully saved."
 msgstr "<strong>Success!</strong> Form successfully saved."
 
@@ -998,9 +1018,11 @@ msgstr "Please provide a valid email address."
 msgid "Placeholder"
 msgstr "Placeholder"
 
-#: integrations/wpforms/class-field.php:267
-#: integrations/gravity-forms/class-gravity-forms.php:113
-#: integrations/contact-form-7/class-contact-form-7.php:79
+#: includes/forms/class-google-recaptcha.php:156
+#: includes/forms/views/tabs/form-settings.php:45
+#: includes/forms/views/tabs/form-settings.php:60
+#: includes/forms/views/tabs/form-settings.php:76
+#: includes/forms/views/tabs/form-settings.php:124
 #: includes/integrations/views/integration-settings.php:65
 #: includes/integrations/views/integration-settings.php:81
 #: includes/integrations/views/integration-settings.php:141
@@ -1008,17 +1030,18 @@ msgstr "Placeholder"
 #: includes/integrations/views/integration-settings.php:172
 #: includes/integrations/views/integration-settings.php:193
 #: includes/integrations/views/integration-settings.php:212
-#: includes/forms/views/tabs/form-settings.php:45
-#: includes/forms/views/tabs/form-settings.php:60
-#: includes/forms/views/tabs/form-settings.php:76
-#: includes/forms/views/tabs/form-settings.php:124
 #: includes/views/other-settings.php:22
+#: integrations/gravity-forms/class-gravity-forms.php:113
+#: integrations/wpforms/class-field.php:267
+#: integrations/contact-form-7/class-contact-form-7.php:79
 msgid "Yes"
 msgstr "Yes"
 
-#: integrations/wpforms/class-field.php:267
-#: integrations/gravity-forms/class-gravity-forms.php:114
-#: integrations/contact-form-7/class-contact-form-7.php:79
+#: includes/forms/class-google-recaptcha.php:158
+#: includes/forms/views/tabs/form-settings.php:49
+#: includes/forms/views/tabs/form-settings.php:64
+#: includes/forms/views/tabs/form-settings.php:80
+#: includes/forms/views/tabs/form-settings.php:128
 #: includes/integrations/views/integration-settings.php:66
 #: includes/integrations/views/integration-settings.php:82
 #: includes/integrations/views/integration-settings.php:142
@@ -1026,11 +1049,10 @@ msgstr "Yes"
 #: includes/integrations/views/integration-settings.php:176
 #: includes/integrations/views/integration-settings.php:197
 #: includes/integrations/views/integration-settings.php:216
-#: includes/forms/views/tabs/form-settings.php:49
-#: includes/forms/views/tabs/form-settings.php:64
-#: includes/forms/views/tabs/form-settings.php:80
-#: includes/forms/views/tabs/form-settings.php:128
 #: includes/views/other-settings.php:26
+#: integrations/gravity-forms/class-gravity-forms.php:114
+#: integrations/wpforms/class-field.php:267
+#: integrations/contact-form-7/class-contact-form-7.php:79
 msgid "No"
 msgstr "No"
 
@@ -1070,8 +1092,8 @@ msgstr "If you want to load some default CSS styles, select \"basic formatting s
 msgid "Select the list(s) to which people who check the checkbox should be subscribed."
 msgstr "Select the list(s) to which people who check the checkbox should be subscribed."
 
-#: integrations/gravity-forms/class-gravity-forms.php:110
 #: includes/integrations/views/integration-settings.php:168
+#: integrations/gravity-forms/class-gravity-forms.php:110
 msgid "Double opt-in?"
 msgstr "Double opt-in?"
 
@@ -1131,14 +1153,14 @@ msgstr "Lists this form subscribes to"
 msgid "Select the list(s) to which people who submit this form should be subscribed."
 msgstr "Select the list(s) to which people who submit this form should be subscribed."
 
-#: integrations/ninja-forms/class-action.php:49
-#: includes/integrations/views/integration-settings.php:189
 #: includes/forms/views/tabs/form-settings.php:56
+#: includes/integrations/views/integration-settings.php:189
+#: integrations/ninja-forms/class-action.php:49
 msgid "Update existing subscribers?"
 msgstr "Update existing subscribers?"
 
-#: includes/integrations/views/integration-settings.php:208
 #: includes/forms/views/tabs/form-settings.php:72
+#: includes/integrations/views/integration-settings.php:208
 msgid "Replace interest groups?"
 msgstr "Replace interest groups?"
 
@@ -1214,8 +1236,8 @@ msgstr "This allows you to personalise your form or response messages."
 msgid "Replaced with the form response (error or success messages)."
 msgstr "Replaced with the form response (error or success messages)."
 
-#: includes/integrations/class-integration-tags.php:49
 #: includes/forms/class-form-tags.php:76
+#: includes/integrations/class-integration-tags.php:49
 msgid "Replaced with the number of subscribers on the selected list(s)"
 msgstr "Replaced with the number of subscribers on the selected list(s)"
 
@@ -1300,14 +1322,14 @@ msgstr "Use the shortcode %s to display this form inside a post, page, or text w
 msgid "Mailchimp Lists"
 msgstr "Mailchimp Lists"
 
-#: includes/integrations/views/integration-settings.php:117
 #: includes/forms/views/tabs/form-settings.php:18
+#: includes/integrations/views/integration-settings.php:117
 msgid "No lists found, <a href=\"%s\">are you connected to Mailchimp</a>?"
 msgstr "No lists found, <a href=\"%s\">are you connected to Mailchimp</a>?"
 
+#: includes/admin/class-admin.php:356
 #: integrations/ninja-forms-2/class-ninja-forms.php:35
 #: integrations/ninja-forms/class-action.php:22
-#: includes/admin/class-admin.php:356
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
@@ -1362,6 +1384,6 @@ msgstr "You can edit your sign up form in the <a href=\"%s\">Mailchimp for WordP
 msgid "Displays your Mailchimp for WordPress sign-up form"
 msgstr "Displays your Mailchimp for WordPress sign up form"
 
-#: includes/forms/class-admin.php:465 includes/forms/class-widget.php:32
+#: includes/forms/class-admin.php:473 includes/forms/class-widget.php:32
 msgid "Mailchimp Sign-Up Form"
 msgstr "Mailchimp Sign up Form"

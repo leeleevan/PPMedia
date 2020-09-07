@@ -47,7 +47,7 @@ class Cookie_Law_Info_Admin {
 	 * Please check the `admin_modules` method for more details
 	 */
 	private $modules=array(
-		'cli-policy-generator'
+		'cli-policy-generator',
 	);
 
 	public static $existing_modules=array();
@@ -155,6 +155,22 @@ class Cookie_Law_Info_Admin {
 			'cookie-law-info-thirdparty',
 			array($this,'admin_non_necessary_cookie_page')
 		);
+		add_submenu_page(
+			'edit.php?post_type='.CLI_POST_TYPE,
+			__('Necessary Cookie','cookie-law-info'),
+			__('Necessary Cookie','cookie-law-info'),
+			'manage_options',
+			'cookie-law-info-necessary',
+			array($this,'admin_necessary_cookie_page')
+		);
+		add_submenu_page(
+			'edit.php?post_type='.CLI_POST_TYPE,
+			__('Privacy Overview','cookie-law-info'),
+			__('Privacy Overview','cookie-law-info'),
+			'manage_options',
+			'cookie-law-info-poverview',
+			array($this,'privacy_overview_page')
+		);
 		//rearrange settings menu
 		if(isset($submenu) && !empty($submenu) && is_array($submenu))
 		{
@@ -177,7 +193,15 @@ class Cookie_Law_Info_Admin {
 			}
 		}
 	}
-
+	/*
+	* Privacy overview CMS page
+	* @since 1.7.7
+	*/
+	public function privacy_overview_page()
+	{	
+		wp_enqueue_style($this->plugin_name);
+		require_once plugin_dir_path( __FILE__ ).'partials/cookie-law-info-privacy_overview.php';
+	}
 	public function plugin_action_links( $links ) 
 	{
 	   $links[] = '<a href="'. get_admin_url(null,'edit.php?post_type='.CLI_POST_TYPE.'&page=cookie-law-info') .'">'.__('Settings','cookie-law-info').'</a>';
@@ -191,19 +215,21 @@ class Cookie_Law_Info_Admin {
 	{
 	    wp_enqueue_style($this->plugin_name);
 	    wp_enqueue_script($this->plugin_name);
-	    $options = array('thirdparty_on_field',
+		$options = array('thirdparty_on_field',
+			'thirdparty_description',
 	        'thirdparty_head_section',
 	        'thirdparty_body_section',
 			//'thirdparty_footer_section',
 	    );
 	    // Get options:
 	    $stored_options = get_option('cookielawinfo_thirdparty_settings', array(
-	        'thirdparty_on_field' => false,
+			'thirdparty_on_field' => false,
+			'thirdparty_description'=> '',
 	        'thirdparty_head_section' => '',
 	        'thirdparty_body_section' => '',
 			//'thirdparty_footer_section' => '',
 	    ));
-
+		
 	    // Check if form has been set:
 	    if (
 	    	isset($_POST['update_thirdparty_settings_form']) || //normal php submit
@@ -228,18 +254,58 @@ class Cookie_Law_Info_Admin {
 	        {	            
 	        	exit();
 	        }
-	    }
+		}
+		
 
 	    $stored_options = get_option('cookielawinfo_thirdparty_settings', array(
-	        'thirdparty_on_field' => false,
+			'thirdparty_on_field' => false,
+			'thirdparty_description'=> '',
 	        'thirdparty_head_section' => '',
 	        'thirdparty_body_section' => '',
 			//'thirdparty_footer_section' => '',
 	    ));
 	    require_once plugin_dir_path( __FILE__ ).'views/admin_non_necessary_cookie.php';
 	}
-
-
+	public function admin_necessary_cookie_page()
+	{
+	    wp_enqueue_style($this->plugin_name);
+	    wp_enqueue_script($this->plugin_name);
+		$options = array('necessary_description'
+	    );
+	    // Get options:
+	    $stored_options = get_option('cookielawinfo_necessary_settings', array(
+			'necessary_description' => '',
+	    ));
+	    // Check if form has been set:
+	    if (
+	    	isset($_POST['update_necessary_settings_form']) || //normal php submit
+	    	isset($_POST['cli_necessary_ajax_update'])
+		) 
+	    {	
+	        // Check nonce:
+	        check_admin_referer('cookielawinfo-update-necessary');
+	        foreach ($options as $key) 
+	        {
+	            if (isset($_POST[$key])) 
+	            {
+	                // Store sanitised values only:
+	                $stored_options[$key]=wp_unslash($_POST[$key]);
+	            }
+	        }
+	        update_option('cookielawinfo_necessary_settings', $stored_options);
+	        echo '<div class="updated"><p><strong>';
+	        echo __('Settings Updated.','cookie-law-info');
+	        echo '</strong></p></div>';
+	        if(!empty($_SERVER[ 'HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])=='xmlhttprequest')
+	        {	            
+	        	exit();
+	        }
+		}
+		$stored_options = get_option('cookielawinfo_necessary_settings', array(
+			'necessary_description'=> '',
+	    ));
+	    require_once plugin_dir_path( __FILE__ ).'views/admin_necessary_cookie.php';
+	}
 	/*
 	* admin settings page
 	*/
@@ -306,10 +372,10 @@ class Cookie_Law_Info_Admin {
 	 */
 	public function add_meta_box() {
 	    
-	    add_meta_box("_cli_cookie_slugid", "Cookie ID", array($this,"metabox_cookie_slugid"), "cookielawinfo", "side", "default");
-		add_meta_box("_cli_cookie_type", "Cookie Type", array($this,"metabox_cookie_type"), "cookielawinfo", "side", "default");
-		add_meta_box("_cli_cookie_duration", "Cookie Duration", array($this,"metabox_cookie_duration"), "cookielawinfo", "side", "default");
-	    add_meta_box("_cli_cookie_sensitivity", "Cookie Sensitivity", array($this,"metabox_cookie_sensitivity"), "cookielawinfo", "side", "default");
+	    add_meta_box("_cli_cookie_slugid",__('Cookie ID','cookie-law-info'), array($this,"metabox_cookie_slugid"), "cookielawinfo", "side", "default");
+		add_meta_box("_cli_cookie_type",__('Cookie Type','cookie-law-info'), array($this,"metabox_cookie_type"), "cookielawinfo", "side", "default");
+		add_meta_box("_cli_cookie_duration", __('Cookie Duration','cookie-law-info'), array($this,"metabox_cookie_duration"), "cookielawinfo", "side", "default");
+	    add_meta_box("_cli_cookie_sensitivity",__('Cookie Sensitivity','cookie-law-info'), array($this,"metabox_cookie_sensitivity"), "cookielawinfo", "side", "default");
 	}
 
 	/** Display the custom meta box for cookie_slugid */
@@ -543,12 +609,12 @@ class Cookie_Law_Info_Admin {
 	 */
 	public function print_combobox_options( $options, $selected ) 
 	{
-		foreach ( $options as $key => $value ) {
-			echo '<option value="' . $value . '"';
-			if ( $value == $selected ) {
+		foreach ( $options as $option ) {
+			echo '<option value="' . $option['value'] . '"';
+			if ( $option['value'] == $selected ) {
 				echo ' selected="selected"';
 			}
-			echo '>' . $key . '</option>';
+			echo '>' . $option['text'] . '</option>';
 		}
 	}
 
@@ -558,8 +624,13 @@ class Cookie_Law_Info_Admin {
 	 */
 	public function get_js_actions() {
 		$js_actions = array(
-			'Close Header' => '#cookie_action_close_header',
-			'Open URL' => 'CONSTANT_OPEN_URL'	// Don't change this value, is used by jQuery
+			'close_header' => array(
+				'text'=>__('Close Header','cookie-law-info'),
+				'value'=>'#cookie_action_close_header'
+				),
+			'open_url' => array(
+				'text' => __('Open URL','cookie-law-info'),
+				'value'=>'CONSTANT_OPEN_URL')	// Don't change this value, is used by jQuery
 		);
 		return $js_actions;
 	}
@@ -570,10 +641,22 @@ class Cookie_Law_Info_Admin {
 	 */
 	public function get_button_sizes() {
 		$sizes = Array(
-			'Extra Large'	=> 'super',
-			'Large'			=> 'large',
-			'Medium'		=> 'medium',
-			'Small'			=> 'small'
+			'super'=> array(
+				'text'=>__('Extra Large','cookie-law-info'),
+				'value'=>'super'
+				),
+			'large'	=> array(
+				'text'=>__('Large','cookie-law-info'),
+				'value'=>'large'
+				),
+			'medium'	=> array(
+				'text'=>__('Medium','cookie-law-info'),
+				'value'=>'medium'
+				),
+			'small'	=> array(
+				'text'=>__('Small','cookie-law-info'),
+				'value'=>'small'
+				),
 		);
 		return $sizes;
 	}
@@ -584,19 +667,55 @@ class Cookie_Law_Info_Admin {
 	 */
 	public function get_fonts() {
 		$fonts = Array(
-			'Default theme font'	=> 'inherit',
-			'Sans Serif' 			=> 'Helvetica, Arial, sans-serif',
-			'Serif' 				=> 'Georgia, Times New Roman, Times, serif',
-			'Arial'					=> 'Arial, Helvetica, sans-serif',
-			'Arial Black' 			=> 'Arial Black,Gadget,sans-serif',
-			'Georgia' 				=> 'Georgia, serif',
-			'Helvetica' 			=> 'Helvetica, sans-serif',
-			'Lucida' 				=> 'Lucida Sans Unicode, Lucida Grande, sans-serif',
-			'Tahoma' 				=> 'Tahoma, Geneva, sans-serif',
-			'Times New Roman' 		=> 'Times New Roman, Times, serif',
-			'Trebuchet' 			=> 'Trebuchet MS, sans-serif',
-			'Verdana' 				=> 'Verdana, Geneva'
-		);
+			'default'=> array(
+						'text'=>__('Default theme font','cookie-law-info'),
+						'value'=>'inherit'
+						),
+			'sans_serif'=> array(
+						'text'=>__('Sans Serif','cookie-law-info'),
+						'value'=>'Helvetica, Arial, sans-serif'
+						),
+			'serif'=> array(
+						'text'=>__('Serif','cookie-law-info'),
+						'value'=>'Georgia, Times New Roman, Times, serif'
+						),
+			'arial'=> array(
+						'text'=>__('Arial','cookie-law-info'),
+						'value'=>'Arial, Helvetica, sans-serif'
+						),
+			'arial_black'=> array(
+						'text'=>__('Arial Black','cookie-law-info'),
+						'value'=>'Arial Black,Gadget,sans-serif'
+						),
+			'georgia'=> array(
+						'text'=>__('Georgia, serif','cookie-law-info'),
+						'value'=>'Georgia, serif'
+						),
+			'helvetica'=> array(
+						'text'=>__('Helvetica','cookie-law-info'),
+						'value'=>'Helvetica, sans-serif'
+						),
+			'lucida'=> array(
+						'text'=>__('Lucida','cookie-law-info'),
+						'value'=>'Lucida Sans Unicode, Lucida Grande, sans-serif'
+						),
+			'tahoma'=> array(
+						'text'=>__('Tahoma','cookie-law-info'),
+						'value'=>'Tahoma, Geneva, sans-serif'
+						),
+			'times_new_roman'=> array(
+						'text'=>__('Times New Roman','cookie-law-info'),
+						'value'=>'Times New Roman, Times, serif'
+						),
+			'trebuchet'=> array(
+						'text'=>__('Trebuchet','cookie-law-info'),
+						'value'=>'Trebuchet MS, sans-serif'
+						),	
+			'verdana'=> array(
+						'text'=>__('Verdana','cookie-law-info'),
+						'value'=>'Verdana, Geneva'
+						),										
+			);
 		return $fonts;
 	}
 

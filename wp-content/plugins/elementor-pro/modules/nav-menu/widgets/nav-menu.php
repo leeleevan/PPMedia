@@ -94,7 +94,7 @@ class Nav_Menu extends Widget_Base {
 				'menu',
 				[
 					'type' => Controls_Manager::RAW_HTML,
-					'raw' => sprintf( __( '<strong>There are no menus in your site.</strong><br>Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'elementor-pro' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
+					'raw' => '<strong>' . __( 'There are no menus in your site.', 'elementor-pro' ) . '</strong><br>' . sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to create one.', 'elementor-pro' ), admin_url( 'nav-menus.php?action=edit&menu=0' ) ),
 					'separator' => 'after',
 					'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
 				]
@@ -162,6 +162,7 @@ class Nav_Menu extends Widget_Base {
 					'background' => __( 'Background', 'elementor-pro' ),
 					'text' => __( 'Text', 'elementor-pro' ),
 				],
+				'style_transfer' => true,
 				'condition' => [
 					'layout!' => 'dropdown',
 				],
@@ -301,6 +302,7 @@ class Nav_Menu extends Widget_Base {
 					'mobile' => sprintf( __( 'Mobile (< %dpx)', 'elementor-pro' ), $breakpoints['md'] ),
 					/* translators: %d: Breakpoint number. */
 					'tablet' => sprintf( __( 'Tablet (< %dpx)', 'elementor-pro' ), $breakpoints['lg'] ),
+					'none' => __( 'None', 'elementor-pro' ),
 				],
 				'prefix_class' => 'elementor-nav-menu--dropdown-',
 				'condition' => [
@@ -552,7 +554,6 @@ class Nav_Menu extends Widget_Base {
 			'hr',
 			[
 				'type' => Controls_Manager::DIVIDER,
-				'style' => 'thick',
 			]
 		);
 
@@ -1118,10 +1119,10 @@ class Nav_Menu extends Widget_Base {
 		endif;
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'menu-toggle' ); ?>>
-			<i class="eicon" aria-hidden="true"></i>
+			<i class="eicon-menu-bar" aria-hidden="true"></i>
 			<span class="elementor-screen-only"><?php _e( 'Menu', 'elementor-pro' ); ?></span>
 		</div>
-		<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container"><?php echo $dropdown_menu_html; ?></nav>
+			<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container"><?php echo $dropdown_menu_html; ?></nav>
 		<?php
 	}
 

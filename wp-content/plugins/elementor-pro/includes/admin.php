@@ -40,7 +40,9 @@ class Admin {
 		wp_enqueue_script(
 			'elementor-pro-admin',
 			ELEMENTOR_PRO_URL . 'assets/js/admin' . $suffix . '.js',
-			[],
+			[
+				'elementor-common',
+			],
 			ELEMENTOR_PRO_VERSION,
 			true
 		);
@@ -58,7 +60,7 @@ class Admin {
 		 */
 		$locale_settings = apply_filters( 'elementor_pro/admin/localize_settings', $locale_settings );
 
-		wp_localize_script(
+		Utils::print_js_config(
 			'elementor-pro-admin',
 			'ElementorProConfig',
 			$locale_settings

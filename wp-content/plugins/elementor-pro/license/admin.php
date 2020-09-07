@@ -3,6 +3,7 @@ namespace ElementorPro\License;
 
 use Elementor\Settings;
 use ElementorPro\Core\Connect\Apps\Activate;
+use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -189,10 +190,6 @@ class Admin {
 					<p><?php echo $this->get_activate_message(); ?></p>
 
 					<div class="elementor-box-action">
-						<a class="elementor-manually-link" href="<?php echo $this->get_activate_manually_url(); ?>">
-							<?php echo __( 'Activate Manually', 'elementor-pro' ); ?>
-						</a>
-
 						<a class="button button-primary" href="<?php echo esc_url( $this->get_connect_url() ); ?>">
 							<?php echo __( 'Connect & Activate', 'elementor-pro' ); ?>
 						</a>
@@ -231,23 +228,25 @@ class Admin {
 					<p class="e-row-divider-bottom elementor-admin-alert elementor-alert-info"><?php echo __( '<strong>Your license key doesn\'t match your current domain</strong>. This is most likely due to a change in the domain URL of your site (including HTTPS/SSL migration). Please deactivate the license and then reactivate it again.', 'elementor-pro' ); ?></p>
 				<?php endif; ?>
 
-
 					<p class="e-row-stretch e-row-divider-bottom">
+						<span>
 						<?php
 						$connected_user = $this->get_connected_account();
 
-						if ( $connected_user ) :?>
-							 <span><?php echo __( 'You\'re connected as', 'elementor-pro' ); ?> <strong><?php echo $this->get_connected_account(); ?></strong>.
-						<?php endif; ?>
+						if ( $connected_user ) :
+							echo sprintf( __( 'You\'re connected as %s.', 'elementor-pro' ), '<strong>' . $this->get_connected_account() . '</strong>' );
+						endif;
+						?>
 
-						<?php echo __( 'Want to activate this website by a different license?', 'elementor-pro' ); ?></span>
+						<?php echo __( 'Want to activate this website by a different license?', 'elementor-pro' ); ?>
+						</span>
 						<a class="button button-primary" href="<?php echo esc_url( $this->get_switch_license_url() ); ?>">
 							<?php echo __( 'Switch Account', 'elementor-pro' ); ?>
 						</a>
 					</p>
 
 					<p class="e-row-stretch">
-						<span>Want to deactivate the license for any reason?</span>
+						<span><?php echo __( 'Want to deactivate the license for any reason?', 'elementor-pro' ); ?></span>
 						<a class="button" href="<?php echo esc_url( $this->get_deactivate_url() ); ?>">
 							<?php echo __( 'Disconnect', 'elementor-pro' ); ?>
 						</a>
@@ -270,6 +269,20 @@ class Admin {
 		}
 
 		return false;
+	}
+
+	public function is_license_about_to_expire() {
+		$license_data = API::get_license_data();
+
+		if ( ! empty( $license_data['subscriptions'] ) && 'enable' === $license_data['subscriptions'] ) {
+			return false;
+		}
+
+		if ( 'lifetime' === $license_data['expires'] ) {
+			return false;
+		}
+
+		return time() > strtotime( '-28 days', strtotime( $license_data['expires'] ) );
 	}
 
 	public function admin_license_details() {
@@ -305,7 +318,6 @@ class Admin {
 							<i class="dashicons dashicons-update" aria-hidden="true"></i>
 							<?php echo __( 'Connect & Activate', 'elementor-pro' ); ?>
 						</a>
-						<a class="elementor-link" href="<?php echo $this->get_activate_manually_url(); ?>"><?php echo __( 'Activate Manually', 'elementor-pro' ); ?></a>
 					</div>
 
 				</div>
@@ -329,16 +341,8 @@ class Admin {
 		}
 
 		if ( API::STATUS_VALID === $license_data['license'] ) {
-			if ( ! empty( $license_data['subscriptions'] ) && 'enable' === $license_data['subscriptions'] ) {
-
-				return;
-			}
-
-			$expires_time = strtotime( $license_data['expires'] );
-			$notification_expires_time = strtotime( '-28 days', $expires_time );
-
-			if ( $notification_expires_time <= current_time( 'timestamp' ) ) {
-				$title = sprintf( __( 'Your License Will Expire in %s.', 'elementor-pro' ), human_time_diff( current_time( 'timestamp' ), $expires_time ) );
+			if ( $this->is_license_about_to_expire() ) {
+				$title = sprintf( __( 'Your License Will Expire in %s.', 'elementor-pro' ), human_time_diff( current_time( 'timestamp' ), strtotime( $license_data['expires'] ) ) );
 				$description = sprintf( __( '<a href="%s" target="_blank">Renew your license today</a>, to keep getting feature updates, premium support and unlimited access to the template library.', 'elementor-pro' ), $renew_url );
 
 				$this->print_admin_message( $title, $description, __( 'Renew License', 'elementor-pro' ), $renew_url );
@@ -392,7 +396,7 @@ class Admin {
 		$license_key = self::get_license_key();
 
 		if ( empty( $license_key ) ) {
-			$links['active_license'] = sprintf( '<a href="%s" class="elementor-plugins-gopro">%s</a>', self::get_url(), __( 'Activate License', 'elementor-pro' ) );
+			$links['active_license'] = sprintf( '<a href="%s" class="elementor-plugins-gopro">%s</a>', self::get_connect_url(), __( 'Connect & Activate', 'elementor-pro' ) );
 		}
 
 		return $links;
@@ -457,7 +461,7 @@ class Admin {
 
 					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Activate', 'elementor-pro' ); ?>"/>
 
-					<p class="description"><?php _e( 'Your license key should look something like this: <code>fb351f05958872E193feb37a505a84be</code>', 'elementor-pro' ); ?></p>
+					<p class="description"><?php printf( __( 'Your license key should look something like this: %s', 'elementor-pro' ), '<code>fb351f05958872E193feb37a505a84be</code>' ); ?></p>
 
 				<?php else :
 					$license_data = API::get_license_data( true ); ?>
@@ -505,8 +509,9 @@ class Admin {
 		return $this->get_app()->is_connected();
 	}
 
-	private function get_connect_url() {
+	public function get_connect_url() {
 		$action = $this->is_connected() ? 'activate_pro' : 'authorize';
+
 		return $this->get_app()->get_admin_url( $action );
 	}
 
@@ -539,7 +544,7 @@ class Admin {
 	 * @return Activate
 	 */
 	private function get_app() {
-		return \ElementorPro\Plugin::elementor()->common->get_component( 'connect' )->get_app( 'activate' );
+		return Plugin::elementor()->common->get_component( 'connect' )->get_app( 'activate' );
 	}
 
 	public function __construct() {

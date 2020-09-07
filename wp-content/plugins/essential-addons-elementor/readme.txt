@@ -1,9 +1,8 @@
 === Essential Addons for Elementor - Pro ===
-Contributors: re_enter_rupok, Codetic
+Contributors: wpdevteam, Codetic, re_enter_rupok, Asif2BD, priyomukul, mahfuz01, nazsabuz
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
-Requires at least: 4.0
-Tested up to: 5.0.3
-Stable tag: 2.15.0
+Tested up to: 5.2
+Stable tag: 3.2.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -73,14 +72,76 @@ List of Elements :
 * Woo Product Collections
 * Image Scroller
 * Advanced Menu
+* LearnDash Course List
 
 List of Extensions :
 
 * Particles (Section)
 * Parallax (Section)
+* Advanced Tooltip
+* Content Protection
+* Reading Progress Bar
 
 
 == Changelog ==
+
+= 3.2.0 - 19/08/2019 =
+- New : Icon Manager updated with Font Awesome 5
+- New : LearnDash Course List element added
+- Fixed: Image Hotspots link issue 
+- Few Minor Bugfix and Improvements
+
+= 3.1.1 - 10/07/2019 =
+- Twitter Feeds and Twitter Carousel updated with new API for better performance
+- Added : WPML Support for "Load More" in post elements
+- Few Minor Bugfix and Improvements
+
+= 3.1.0 - 03/07/2019 =
+- New Extension : Content Protection
+- Added : WPML Support for most of the elements (rest are coming in next update)
+- Added : Post Block, Post Grid, Post Carousel read more button
+- Fixed : Image Hotspot link not working
+- Fixed : License deactivation issue
+- Few Minor Bugfix and Improvements
+
+= 3.0.5 - 16/06/2019 =
+- Added : Manual post selection option to all Post Elements
+- Fixed : Interactive card video issue
+- Fixed : License unvalidation issue
+- Enhanced : Instagram Feed with API instead of JS library dependency
+- Few Minor Bugfix and Improvements
+
+= 3.0.4 - 04/06/2019 =
+- Fixed : Particle effects issue
+- Fixed : Interactive Promo link issue
+- Fixed : Smart Post List issue
+- Fixed : Woo Collections error
+- Few Minor Bugfix and Improvements
+
+= 3.0.3 - 29/05/2019 =
+- Added : ALT tag for all images throught the plugin
+- Fixed : Post List excerpt issue
+- Enahcnement : Image Comparison element script improved 
+- Few Minor Bugfix and Improvements
+
+= 3.0.2 - 29/05/2019 =
+- Fixed : Plugin automatic updater
+- Fixed : Parallax error
+- Few Minor Bugfix and Improvements
+
+= 3.0.1 - 27/05/2019 =
+- Fixed : Ajax Post Search
+- Few Minor Bugfix and Improvements
+
+= 3.0.0 - 23/05/2019 =
+- Global Modular Control
+- Clear Cache Tool
+- Code Structure Revamped
+- Only one minified JS and one CSS file for all the elements
+- No extra asset will be loaded if EA isn't used on any page
+- Fixed: IE Compatibility
+- Fixed: EA Dynamic Gallery Product Query
+- Few Minor Bugfix and Improvements
 
 = 2.15.0 =
 - Added : Cookie Consent element
@@ -426,4 +487,3 @@ Initial stable realese
 
 
 == Upgrade Notice ==
-

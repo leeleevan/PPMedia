@@ -79,7 +79,9 @@ class Post_Comments extends Base {
 				'label' => __( 'Search & Select', 'elementor-pro' ),
 				'type' => QueryControlModule::QUERY_CONTROL_ID,
 				'label_block' => true,
-				'filter_type' => 'by_id',
+				'autocomplete' => [
+					'object' => QueryControlModule::QUERY_OBJECT_POST,
+				],
 				'condition' => [
 					'source_type' => Module::SOURCE_TYPE_CUSTOM,
 				],
@@ -101,7 +103,7 @@ class Post_Comments extends Base {
 			?>
 			<div class="elementor-alert elementor-alert-danger" role="alert">
 				<span class="elementor-alert-title">
-					<?php esc_html_e( 'Comments Are Closed!', 'elementor-pro' ); ?>
+					<?php esc_html_e( 'Comments are closed.', 'elementor-pro' ); ?>
 				</span>
 				<span class="elementor-alert-description">
 					<?php esc_html_e( 'Switch on comments from either the discussion box on the WordPress post edit screen or from the WordPress discussion settings.', 'elementor-pro' ); ?>

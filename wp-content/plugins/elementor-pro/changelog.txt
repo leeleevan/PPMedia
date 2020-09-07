@@ -1,5 +1,185 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.6.5 - 2019-08-26
+* Tweak: Added compatibility for the upcoming release of Elementor v2.7
+* Fix: Button style not working when `quantity` is enabled in Custom Add To Cart widget
+* Fix: Updated minified JS file fixed WhatsApp base URL in Share Buttons widget
+
+#### 2.6.4 - 2019-08-21
+* Tweak: Added compatibility for the upcoming release of Elementor v2.7
+* Fix: Changed WhatsApp base URL in Share Buttons widget for cross-device compatibility
+* Fix: Random slides order after several clicks on pagination in Testimonial Carousel widget
+
+#### 2.6.3 - 2019-08-18
+* Fix: Core version rollback to `>2.6.0` causes a fatal error
+* Fix: Duplicate images when slideshow skin is selected in Media Carousel lightbox
+* Fix: Default bottom margin added to reCAPTCHA V3 badge
+* Fix: Input glitch in reCAPTCHA V3 threshold settings
+
+#### 2.6.2 - 2019-07-30
+* Tweak: Better accessibility support in Search Form widget
+* Fix: UI glitched in Popup publish screen ([#8616](https://github.com/elementor/elementor/issues/8616))
+* Fix: "Child of Term" and "Any child of term" conditions ([#8695](https://github.com/elementor/elementor/issues/8695))
+* Fix: Restored `library_widget_templates` action hook for 3rd party compatibility ([#8687](https://github.com/elementor/elementor/issues/8687))
+* Fix: Twitter Icon missing in Blockquote widget
+* Fix: Form reCAPTCHA v3 badge position not working
+* Fix: Renewal notice bar appears in wrong situations
+* Fix: Draft Icon Set loads empty Icon Library
+
+#### 2.6.1 - 2019-07-24
+* Fix: Query Control autocomplete not retrieving results ([#8672](https://github.com/elementor/elementor/issues/8672), [#8661](https://github.com/elementor/elementor/issues/8661))
+* Fix: Price Table features section not working ([#8660](https://github.com/elementor/elementor/issues/8660))
+
+#### 2.6.0 - 2019-07-23
+* New: Introducing Custom Icon sets - including Fontello, IcoMoon and Fontastic support ([#110](https://github.com/elementor/elementor/issues/110))
+* New: Added Font Awesome 5 Pro integration including 5,300+ icons ([#4430](https://github.com/elementor/elementor/issues/4430))
+* New: Added reCAPTCHA v3 integration to Form widget ([#8213](https://github.com/elementor/elementor/issues/8213), [#6039](https://github.com/elementor/elementor/issues/6039), [#7165](https://github.com/elementor/elementor/issues/7165))
+* Tweak: Added Exit Animation for Popups ([#7063](https://github.com/elementor/elementor/issues/7063))
+* Tweak: Added ACF Dynamic tag support for archive pages ([#5147](https://github.com/elementor/elementor/issues/5147))
+* Tweak: Added Navigator Indicators for Custom CSS & Motion Effects ([#2180](https://github.com/elementor/elementor/issues/2180))
+* Tweak: Added Dynamic capabilities for Form Redirect action ([#7552](https://github.com/elementor/elementor/issues/7552))
+* Tweak: Added Logged In Message styling options for Login widget ([#7928](https://github.com/elementor/elementor/issues/7928))
+* Tweak: Added `none` breakpoint option to Nav Menu widget ([#7916](https://github.com/elementor/elementor/issues/7916))
+* Tweak: Added option to place Post Terms dynamic tag without links ([#8366](https://github.com/elementor/elementor/issues/8366))
+* Tweak: Added `elementor/query/query_results` hook to Query Control to allow full control over results ([#7912](https://github.com/elementor/elementor/issues/7912))
+* Tweak: Allow choosing Heading HTML tag in Price Table widget ([#8090](https://github.com/elementor/elementor/issues/8090))
+* Tweak: Show popup on dynamic click even when `Avoid Multiple Popups` option is selected ([#8189](https://github.com/elementor/elementor/issues/8189))
+* Tweak: Added condition option to all of archive child pages ([#8256](https://github.com/elementor/elementor/issues/8256))
+* Tweak: Added `Effects Relative To` control to Scrolling Effects
+* Tweak: Allow shortcodes in HTML Form field
+* Tweak: Removed donReach integration from Share Buttons widget due to service inconsistent stability
+* Tweak: Changed MailChimp `List` label to `Audience`
+* Tweak: Improved Entrance and Exit animation behavior in Popup
+* Tweak: Added `Deprecated Notice` control to `Archive Products` and `Woo Products` widgets
+* Tweak: Added default dynamic title for archives in Theme Builder
+* Tweak: Added condition to show `Centered Slides` control in Media Carousel widget
+* Tweak: Added notice bar in the Editor when the license is expired or not activated
+* Tweak: Replaced `select` control with `choose` control in Price List widget
+* Tweak: Removed Font Awesome 4 dependencies from the Editor
+* Tweak: Minor styling tweaks in the Popup publish modal
+* Tweak: Hide ordering form in Products widget on front page
+* Tweak: Removed page title markup when 'Hide Title' is active
+* Tweak: Added style controls for HTML field in Form widget
+* Fix: Form widget Date picker makes the Popup builder disappear ([#7240](https://github.com/elementor/elementor/issues/7240))
+* Fix: Sticky element stop point stops working on viewport resize ([#7884](https://github.com/elementor/elementor/issues/7884))
+* Fix: Copy-Paste style not pasting the Pointer option in Nav Menu widget ([#8497](https://github.com/elementor/elementor/issues/8497))
+* Fix: Missing Print icon in Share Buttons ([#8506](https://github.com/elementor/elementor/issues/8506))
+* Fix: UI style glitch in Blockquote widget when viewing from iPad
+* Deprecated: `DB::save_editor()` - Remove usage of this method ([Deprecation Post](https://developers.elementor.com/v2-6-0-planned-deprecations/))
+* Deprecated: `DB::get_plain_editor()` - Remove usage of this method ([Deprecation Post](https://developers.elementor.com/v2-6-0-planned-deprecations/))
+
+#### 2.5.14 - 2019-07-14
+* Fix: Better WC Related Product grid support to various themes ([#8555](https://github.com/elementor/elementor/issues/8555))
+
+#### 2.5.13 - 2019-07-11
+* Fix: Better WC grid support to various themes
+
+#### 2.5.12 - 2019-07-10
+* Fix: Grid for WooCommerce Archive Product widget
+* Fix: Remove redundant `whitespace` CSS property causes style glitch in iPad
+* Tweak: Added more compatibility for Elementor v2.6
+
+#### 2.5.11 - 2019-07-02
+* Fix: Close icon missing from Nav Menu widget ([#8460](https://github.com/elementor/elementor/issues/8460))
+* Fix: Elementor Pro v2.5.10 shows PHP notice regarding notice bar ([#8461](https://github.com/elementor/elementor/issues/8461))
+* Fix: Fatal error when deleting used Pods fields ([#8396](https://github.com/elementor/elementor/issues/8396))
+* Fix: Missing dropdown icon in conditions screen
+
+#### 2.5.10 - 2019-05-28
+* Tweak: Added compatibility for the upcoming release of Elementor v2.6
+* Tweak: Error caused by empty Rows & Columns values in Products widget ([#8261](https://github.com/elementor/elementor/issues/8261))
+* Fix: Do not unset `product` CPT if it's not from WooCommerce ([#8160](https://github.com/elementor/elementor/issues/8160))
+* Fix: Column Spacing not working in WooCommerce Archive Products widget ([#8285](https://github.com/elementor/elementor/issues/8285))
+* Fix: Title styling not working in Products Categories widget
+* Fix: Empty value in Dynamic Pods Gallery dropdown using Safari browser
+* Fix: WooCommerce archives included in "All Archives" condition
+
+#### 2.5.9 - 2019-05-28
+* Tweak: Removed `auto-confirm` control from MailPoet to support new version of MailPoet
+* Fix: Multiple Custom Fonts not rendered in the editor
+* Fix: Products `sale` query - handle exclude by manual selection.
+* Fix: Product Categories grid row & column style
+* Fix: Form integration AJAX cache override
+* Fix: Removed redundant CSS on Canvas & Header-Footer page templates
+
+#### 2.5.8 - 2019-05-06
+* Fix: Popup entrance animation not working in frontend
+* Fix: Popup Exit Intent trigger activated multiple times
+
+#### 2.5.7 - 2019-05-05
+* Fix: Embedded video keeps playing after a Popup is closed ([#7875](https://github.com/elementor/elementor/issues/7875))
+* Fix: Maximum call stack size exceeded error in Safari ([#7824](https://github.com/elementor/elementor/issues/7824))
+* Fix: Entrance animations not appearing on Popup reopen ([#7395](https://github.com/elementor/elementor/issues/7395))
+* Fix: WC variations select style glitch in several themes ([#8008](https://github.com/elementor/elementor/issues/8008))
+* Fix: Theme Builder taxonomy conditions not retrieving proper results in edge cases
+
+#### 2.5.6 - 2019-04-29
+* Tweak: Removed `Shortcode` dynamic from Image, Gallery and Media control
+* Fix: Popup not inheriting entrance animation in responsive mode ([#7809](https://github.com/elementor/elementor/issues/7809))
+* Fix: Terms autocomplete retrieves wrong results in Query Control
+* Fix: Query Control Related by author glitches in edge cases
+* Fix: Query Control using terms for Products widget
+* Fix: Posts cards style glitch in small screens
+* Fix: Display conditions delete icon missing in small screens
+* Fix: Avoid rendering Menu Cart widget in WordPress native editor
+
+#### 2.5.5 - 2019-04-08
+* Tweak: Allow text selection inside a Popup
+* Fix: Added backwards compatibility for `tax_query` in Query Control ([#7751](https://github.com/elementor/elementor/issues/7751))
+* Fix: Missing arguments for `widget_title` filter ([#7745](https://github.com/elementor/elementor/issues/7745))
+
+#### 2.5.4 - 2019-04-03
+* Fix: Move Query from using `term_id` to `term_taxonomy_id` ([#7653](https://github.com/elementor/elementor/issues/7653))
+* Fix: Offset manipulation hook removal in Query control
+* Fix: Missing form field `ID` in some edge cases ([#7711](https://github.com/elementor/elementor/issues/7711), [#7660](https://github.com/elementor/elementor/issues/7660))
+
+#### 2.5.3 - 2019-03-31
+* Tweak: Updated Google Calendar dynamic tag URL ([#7673](https://github.com/elementor/elementor/issues/7673))
+* Fix: Missing form field names ([#7651](https://github.com/elementor/elementor/issues/7651))
+* Fix: PHP 5.4 backward compatibility in Query Control ([#7633](https://github.com/elementor/elementor/issues/7633))
+* Fix: `products_deprecated` Query Control module compatibility ([#7654](https://github.com/elementor/elementor/issues/7654))
+* Fix: Changed query method from `term_id` to `term_taxonomy_id` ([#7653](https://github.com/elementor/elementor/issues/7653))
+
+#### 2.5.2 - 2019-03-27
+* Fix: Overwrite parent widget type in Global Widget ([#7632](https://github.com/elementor/elementor/issues/7632))
+* Fix: Avoid Duplicates option not working in Query Control ([#7635](https://github.com/elementor/elementor/issues/7635))
+* Fix: Manual Selection option not working in Query Control ([#7634](https://github.com/elementor/elementor/issues/7634))
+* Fix: Incorrect condition caused handlers issues inside popup
+
+#### 2.5.1 - 2019-03-26
+* Fix: Query Control invalid call to deprecated action ([#7619](https://github.com/elementor/elementor/issues/7619))
+* Tweak: Renamed action hook from `elementor_pro/{$widget_name}/query/{$query_id}` to `elementor/query/{$query_id}`
+* Tweak: Renamed filter hook from `elementor_pro/query_control/get_query_args/current_query` to `elementor/query/get_query_args/current_query`
+
+#### 2.5.0 - 2019-03-26
+* New: Introducing Motion Effects including Scrolling & Mouse effects ([#72](https://github.com/elementor/elementor/issues/72))
+* New: Introducing Related Posts for Query Control ([#7306](https://github.com/elementor/elementor/issues/7306), [#7490](https://github.com/elementor/elementor/issues/7490))
+* New: Introducing Date query for Query Control
+* New: Introducing Sticky Posts support for Query Control ([#2501](https://github.com/elementor/elementor/issues/2501))
+* Tweak: Added option to open a Popup by a custom selector ([#6871](https://github.com/elementor/elementor/issues/6871), [#6876](https://github.com/elementor/elementor/issues/6876), [#7258](https://github.com/elementor/elementor/issues/7258))
+* Tweak: Option to count when Popup is closed in "Show up to X times" Advanced Rule
+* Tweak: Added full border radius control options inside Popup
+* Tweak: Changed exit intent icon in Popups
+* Tweak: Show only one popup in its own preview
+* Tweak: Added responsive support to Popup entrance animation control
+* Tweak: Conditions - Singular `All Pages` string changed to `Pages`
+* Tweak: Added form field shortcode support for Drip tags ([#7000](https://github.com/elementor/elementor/issues/7000))
+* Tweak: Added dynamic capabilities to Price List widget ([#7258](https://github.com/elementor/elementor/issues/7258))
+* Tweak: Added Dynamic capabilities to Custom Attributes ([#6779](https://github.com/elementor/elementor/issues/6779))
+* Tweak: Added dynamic capabilities to Flip Box widget ([#6986](https://github.com/elementor/elementor/issues/6986))
+* Tweak: Decrease `z-index` for Nav Menu ([#6869](https://github.com/elementor/elementor/issues/6869))
+* Tweak: Changed "Scrolling Effects" section label to "Motion Effects"
+* Tweak: Use filter `get_meta_viewport` for header templates ([#7043](https://github.com/elementor/elementor/issues/7043))
+* Tweak: use filterable `Util::get_public_post_types()` in Theme Builder ([#7172](https://github.com/elementor/elementor/issues/7172))
+* Tweak: Added Cloudflare rocket-loader support ([#7443](https://github.com/elementor/elementor/issues/7443))
+* Tweak: Added responsive support to WC Products Columns & Rows Gap controls ([#6913](https://github.com/elementor/elementor/issues/6913))
+* Tweak: WC Menu cart "View Cart" & "Checkout" buttons styling
+* Fix: Custom ID reset to default when dragging repeater
+* Fix: Conflict between archive-products widget and WC customizer
+* Fix: Add to Cart widget `spacing` and `space-between`
+* Fix: Library view when creating a new Header or Footer
+* Fix: Post types labels missing on Add New Template modal
+
 #### 2.4.8 - 2019-03-11
 * Fix: Missing query section in Products widget
 * Fix: Missing Taxonomy controls in Products widget in edge cases

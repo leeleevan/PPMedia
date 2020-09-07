@@ -57,10 +57,13 @@ class Price_List extends Base_Widget {
 		$repeater->add_control(
 			'title',
 			[
-				'label' => __( 'Title & Description', 'elementor-pro' ),
+				'label' => __( 'Title', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
 				'label_block' => 'true',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -70,7 +73,9 @@ class Price_List extends Base_Widget {
 				'label' => __( 'Description', 'elementor-pro' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => '',
-				'show_label' => false,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -80,6 +85,9 @@ class Price_List extends Base_Widget {
 				'label' => __( 'Image', 'elementor-pro' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [],
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -89,6 +97,9 @@ class Price_List extends Base_Widget {
 				'label' => __( 'Link', 'elementor-pro' ),
 				'type' => Controls_Manager::URL,
 				'default' => [ 'url' => '#' ],
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -376,11 +387,20 @@ class Price_List extends Base_Widget {
 			'vertical_align',
 			[
 				'label' => __( 'Vertical Align', 'elementor-pro' ),
-				'type' => Controls_Manager::SELECT,
+				'type' => Controls_Manager::CHOOSE,
 				'options' => [
-					'top' => __( 'Top', 'elementor-pro' ),
-					'bottom' => __( 'Bottom', 'elementor-pro' ),
-					'center' => __( 'Center', 'elementor-pro' ),
+					'top' => [
+						'title' => __( 'Top', 'elementor-pro' ),
+						'icon' => 'eicon-v-align-top',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor-pro' ),
+						'icon' => 'eicon-v-align-middle',
+					],
+					'bottom' => [
+						'title' => __( 'Bottom', 'elementor-pro' ),
+						'icon' => 'eicon-v-align-bottom',
+					],
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-price-list-item' => 'align-items: {{VALUE}};',
@@ -441,7 +461,7 @@ class Price_List extends Base_Widget {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings(); ?>
+		$settings = $this->get_settings_for_display(); ?>
 
 		<ul class="elementor-price-list">
 

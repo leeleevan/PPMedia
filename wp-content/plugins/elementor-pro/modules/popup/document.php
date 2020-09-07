@@ -321,7 +321,7 @@ class Document extends Theme_Section_Document {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'entrance_animation',
 			[
 				'label' => __( 'Entrance Animation', 'elementor-pro' ),
@@ -331,11 +331,21 @@ class Document extends Theme_Section_Document {
 			]
 		);
 
+		$this->add_responsive_control(
+			'exit_animation',
+			[
+				'label' => __( 'Exit Animation', 'elementor-pro' ),
+				'type' => Controls_Manager::EXIT_ANIMATION,
+				'frontend_available' => true,
+			]
+		);
+
 		$this->add_control(
 			'entrance_animation_duration',
 			[
 				'label' => __( 'Animation Duration', 'elementor-pro' ) . ' (sec)',
 				'type' => Controls_Manager::SLIDER,
+				'frontend_available' => true,
 				'default' => [
 					'size' => 1.2,
 				],
@@ -349,9 +359,22 @@ class Document extends Theme_Section_Document {
 				'selectors' => [
 					'{{WRAPPER}} .dialog-widget-content' => 'animation-duration: {{SIZE}}s',
 				],
-				'condition' => [
-					'entrance_animation!' => '',
+				'conditions' => [
+					'relation' => 'or',
+					'terms' => [
+						[
+							'name' => 'entrance_animation',
+							'operator' => '!==',
+							'value' => '',
+						],
+						[
+							'name' => 'exit_animation',
+							'operator' => '!==',
+							'value' => '',
+						],
+					],
 				],
+				'frontend_available' => true,
 			]
 		);
 
@@ -387,16 +410,10 @@ class Document extends Theme_Section_Document {
 			'border_radius',
 			[
 				'label' => __( 'Border Radius', 'elementor-pro' ),
-				'type' => Controls_Manager::SLIDER,
+				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 200,
-					],
-				],
 				'selectors' => [
-					'{{WRAPPER}} .dialog-widget-content' => 'border-radius: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .dialog-widget-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				],
 			]
 		);
@@ -697,6 +714,17 @@ class Document extends Theme_Section_Document {
 			]
 		);
 
+		$this->add_control(
+			'open_selector',
+			[
+				'label' => __( 'Open By Selector', 'elementor-pro' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => __( '#id, .class', 'elementor-pro' ),
+				'description' => __( 'In order to open a popup on selector click, please set your Popup Conditions', 'elementor-pro' ),
+				'frontend_available' => true,
+			]
+		);
+
 		$this->add_responsive_control(
 			'margin',
 			[
@@ -741,7 +769,6 @@ class Document extends Theme_Section_Document {
 		$config = parent::get_remote_library_config();
 
 		$config['type'] = 'popup';
-		$config['category'] = '';
 		$config['autoImportSettings'] = true;
 
 		return $config;
